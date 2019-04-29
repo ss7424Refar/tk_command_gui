@@ -6,6 +6,9 @@ import os
 import configparser
 import subprocess
 import threading
+# import numpy as np
+# import networkx as nx
+# import tensorflow as tf
 
 
 class Base:
@@ -60,9 +63,11 @@ class Face1:
         self.output_path = StringVar()
 
         cf = configparser.ConfigParser()
+        print(os.getcwd())
         cf.read(os.getcwd() + "/gui.ini")
         self.pb = cf.get("path", "pb")
         self.output = cf.get("path", "output")
+        self.tf = cf.get("path", "tf")
 
         # pb path
         Label(self.face1, text="pb path").place(x=20, y=36, width=100, height=40)
@@ -100,21 +105,28 @@ class Face1:
             msg_box.showerror("Error", "please select output path")
             return
 
-        cmd = 'python ./mo_tf.py --input_model="' + path1 + '/frozen_inference_graph.pb"' + \
-              ' --tensorflow_use_custom_operations_config extensions/front/tf/ssd_v2_support.json ' \
-              '--tensorflow_object_detection_api_pipeline_config '\
-              + path2 + 'pipeline.config --output="detection_boxes,detection_scores,num_detections" ' \
-                        '--output_dir=' + path2 + ' --reverse_input_channels'
-
+        cmd = 'python mo_tf.py --input_model="' + path1 + '/frozen_inference_graph.pb"' + ' --tensorflow_use_custom_operations_config extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config ' + path1 + '/pipeline.config --output="detection_boxes,detection_scores,num_detections" ' + '--output_dir=' + path2 + ' --reverse_input_channels'
         print(cmd)
-        p = subprocess.Popen("cmd.exe /c" + cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+        d = os.path.dirname(__file__)  # 返回当前文件所在的目录
+        parent_path = os.path.dirname(d)  # 获得d所在的目录,即d的父级目录
+        parent_path = parent_path.replace('/', '\\')
+
+        # 创建空文件
+        batch_path = "./convert.bat"
+        fp = open(batch_path, 'w')
+        fp.write('cd ' + self.tf + '\n')
+        fp.write(cmd + '\n')
+        fp.close()
+
+        p = subprocess.Popen("cmd.exe /c" + "convert.bat", stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         curline = p.stdout.readline()
         while (curline != b''):
             print(curline.decode("gbk"))
             curline = p.stdout.readline()
 
         p.wait()
-        print(p.returncode)
+        msg_box.showinfo("Info", "done, code = " + str(p.returncode))
 
     def thread_it(self, func, *args):
         # 创建
@@ -146,6 +158,7 @@ class Face2:
         self.video = cf.get("path", "video")
         self.model = cf.get("path", "model")
         self.sdk = cf.get("path", "sdk")
+        self.lib = cf.get("path", "lib")
 
         # video path
         Label(self.face1, text="video path").place(x=20, y=36, width=100, height=40)
@@ -193,16 +206,16 @@ class Face2:
             msg_box.showerror("Error", "please select model path")
             return
 
-        d = os.path.dirname(__file__)  # 返回当前文件所在的目录
-        parent_path = os.path.dirname(d)  # 获得d所在的目录,即d的父级目录
-        parent_path = parent_path.replace('/', '\\')
+        # d = os.path.dirname(__file__)  # 返回当前文件所在的目录
+        # parent_path = os.path.dirname(d)  # 获得d所在的目录,即d的父级目录
+        # parent_path = parent_path.replace('/', '\\')
 
         # 创建空文件
         batch_path = "./run.bat"
         fp = open(batch_path, 'w')
         fp.write('cd ' + self.sdk + '\n')
         fp.write('call setupvars.bat' + '\n')
-        fp.write('cd ' + parent_path + '\\lib' + '\n')
+        fp.write('cd ' + self.lib + '\n')
         fp.write('object_detection_demo_ssd_async.exe -i ' + path1 + ' -m ' + path2 + ' -d CPU -t ' + self.rate.get() + '\n')
         fp.close()
 
