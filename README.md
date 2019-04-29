@@ -7,7 +7,7 @@
 
 + 使用到的命令如下
 
-  1. 转换...到tensorflow
+  1. 转换openvino到tensorflow
 
      ```
      python ./mo_tf.py --input_model="{frozen_inference_graph.pb_path}" --tensorflow_use_custom_operations_config extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config {pipeline.config_path} --output="detection_boxes,detection_scores,num_detections" --output_dir={output_path} --reverse_input_channels
