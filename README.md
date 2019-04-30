@@ -31,3 +31,9 @@
 
 + `https://software.intel.com/en-us/openvino-toolkit/documentation/get-started`
 
+### 4. 样式
+
++ 如下
+![例1](doc/1.PNG) 
+![例2](doc/2.PNG)
+>只适用于window，dist下为打包好的exe.
