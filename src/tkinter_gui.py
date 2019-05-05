@@ -292,11 +292,13 @@ class Face3:
                 v = c[item]
                 for index in range(len(v)):
                     s = v[index]
-                    tag = s['tags'][0]
-                    if dic.__contains__(tag):
-                        dic[tag] = dic[tag] + 1
-                    else:
-                        dic[tag] = 1
+                    tag = s["tags"]
+                    if tag:
+                        tag = tag[0]
+                        if dic.__contains__(tag):
+                            dic[tag] = dic[tag] + 1
+                        else:
+                            dic[tag] = 1
         msg_box.showinfo("Info", dic)
         print(dic)
 

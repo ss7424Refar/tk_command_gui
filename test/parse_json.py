@@ -1,6 +1,6 @@
 import json
 
-f = open('/opt/hello.json', 'r')
+f = open('C:/Users/skr/Desktop/mira/videos/7sites/1.steps_1/101.mp4.json', 'r')
 content = f.read()
 # print(content)
 
@@ -15,10 +15,13 @@ for item in c:
         v = c[item]
         for index in range(len(v)):
             s = v[index]
-            tag = s['tags'][0]
-            if dic.__contains__(tag):
-                dic[tag] = dic[tag] + 1
-            else:
-                dic[tag] = 1
+            # print(s)
+            tag = s["tags"]
+            if tag:
+                tag = tag[0]
+                if dic.__contains__(tag):
+                    dic[tag] = dic[tag] + 1
+                else:
+                    dic[tag] = 1
 
 print(dic)
