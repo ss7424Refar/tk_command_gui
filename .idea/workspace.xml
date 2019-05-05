@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00905234-8f18-42f0-bf5e-171a0d9580d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/venv/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Keras_Applications-1.0.7.dist-info/LICENSE" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Keras_Applications-1.0.7.dist-info/METADATA" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/Keras_Applications-1.0.7.dist-info/RECORD" afterDir="false" />
@@ -7303,25 +7302,7 @@
       <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/win32ctypes/win32api.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/win32ctypes/win32cred.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/venv/Lib/tcl8.6/init.tcl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tk_command_gui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tk_command_gui.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/Analysis-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/EXE-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/PKG-00.pkg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/PKG-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/PYZ-00.pyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/PYZ-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/base_library.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/warn-tkinter_gui.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/warn-tkinter_gui.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/tkinter_gui/xref-tkinter_gui.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/tkinter_gui/xref-tkinter_gui.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dist/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/dist/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dist/gui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/src/dist/gui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dist/tkinter_gui.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/dist/tkinter_gui.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tkinter_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tkinter_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/parse_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/parse_json.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/easy-install.pth" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/PKG-INFO" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/SOURCES.txt" beforeDir="false" />
@@ -7642,7 +7623,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Merge.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
@@ -7654,11 +7635,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dist/gui.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -7713,9 +7694,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="108" />
-    <option name="y" value="51" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-46" />
+    <option name="y" value="45" />
     <option name="width" value="1685" />
     <option name="height" value="1018" />
   </component>
@@ -7740,18 +7721,6 @@
             <path>
               <item name="tk_command_gui" type="b2602c69:ProjectViewProjectNode" />
               <item name="tk_command_gui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tk_command_gui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tk_command_gui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tk_command_gui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tk_command_gui" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -7764,7 +7733,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/dist" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/doc" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -7929,7 +7898,7 @@
       <workItem from="1556344588302" duration="9729000" />
       <workItem from="1556675197821" duration="816000" />
       <workItem from="1557023113126" duration="5138000" />
-      <workItem from="1557031698127" duration="1783000" />
+      <workItem from="1557031698127" duration="2645000" />
     </task>
     <task id="LOCAL-00001" summary="[Add] parse_vott.json_20190505">
       <created>1557030959388</created>
@@ -7938,17 +7907,23 @@
       <option name="project" value="LOCAL" />
       <updated>1557030959389</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[Fix] parse_vott.json_20190505">
+      <created>1557033740608</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1557033740609</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24479000" />
+    <option name="totallyTimeSpent" value="25341000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="589" y="40" width="1685" height="1018" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23507692" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -7959,10 +7934,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32947975" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.34276018" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.36767897" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.36767897" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -8016,7 +7991,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[Add] parse_vott.json_20190505" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Add] parse_vott.json_20190505" />
+    <MESSAGE value="[Fix] parse_vott.json_20190505" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Fix] parse_vott.json_20190505" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tk_command_gui$tkinter_gui.coverage" NAME="tkinter_gui Coverage Results" MODIFIED="1557032998656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
@@ -8085,23 +8061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Merge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dist/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -8112,7 +8071,31 @@
     <entry file="file://$PROJECT_DIR$/src/dist/gui.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tkinter_gui.spec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Merge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
