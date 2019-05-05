@@ -6,7 +6,7 @@ import os
 import configparser
 import subprocess
 import threading
-
+import json
 
 class Base:
     def __init__(self, master):
@@ -15,7 +15,7 @@ class Base:
         self.root.title('Index Page')
         # 设置窗口大小
         self.width = 540
-        self.height = 230
+        self.height = 260
 
         # 获取屏幕尺寸以计算布局参数，使窗口居屏幕中央
         screenwidth = self.root.winfo_screenwidth()
@@ -34,19 +34,23 @@ class Index:
         self.master = master
         self.faceIndex = Frame(self.master)
         self.faceIndex.config(bg='Ivory')
-        self.faceIndex.place(x=0, y=0, width=540, height=230)
+        self.faceIndex.place(x=0, y=0, width=540, height=290)
         Button(self.faceIndex, text='Convert To TF', command=self.convert).place(x=20, y=30, width=500, height=60)
         Button(self.faceIndex, text='Run Model', command=self.run).place(x=20, y=100, width=500, height=60)
+        Button(self.faceIndex, text='Count Tag', command=self.count).place(x=20, y=170, width=500, height=60)
 
 
     def convert(self):
         self.faceIndex.destroy()
         Face1(self.master)
 
-
     def run(self):
         self.faceIndex.destroy()
         Face2(self.master)
+
+    def count(self):
+        self.faceIndex.destroy()
+        Face3(self.master)
 
 
 class Face1:
@@ -54,7 +58,7 @@ class Face1:
         self.master = master
         self.face1 = Frame(self.master)
         self.face1.config(bg='Beige')
-        self.face1.place(x=0, y=0, width=540, height=230)
+        self.face1.place(x=0, y=0, width=540, height=260)
 
         self.pb_path = StringVar()
         self.output_path = StringVar()
@@ -134,7 +138,7 @@ class Face2:
         self.master = master
         self.face1 = Frame(self.master)
         self.face1.config(bg='Beige')
-        self.face1.place(x=0, y=0, width=540, height=230)
+        self.face1.place(x=0, y=0, width=540, height=260)
 
         self.video_path = StringVar()
         self.model_path = StringVar()
@@ -226,6 +230,65 @@ class Face2:
         t.setDaemon(True)
         # 启动
         t.start()
+
+    def back(self):
+        self.face1.destroy()
+        Index(self.master)
+
+
+class Face3:
+    def __init__(self, master):
+        self.master = master
+        self.face1 = Frame(self.master)
+        self.face1.config(bg='Beige')
+        self.face1.place(x=0, y=0, width=540, height=260)
+
+        self.json_path = StringVar()
+
+        cf = configparser.ConfigParser()
+        cf.read(os.getcwd() + "/gui.ini")
+        self.json = cf.get("path", "json")
+
+        # json path
+        Label(self.face1, text="json path").place(x=20, y=36, width=100, height=40)
+        Entry(self.face1, textvariable=self.json_path).place(x=123, y=36, width=270, height=40)
+        Button(self.face1, text="add", command=self.add_json_path).place(x=405, y=36, width=70, height=40)
+
+
+        Button(self.face1, text="count", bg="white", command=self.on_count).place(x=20, y=100,width=140,height=40)
+
+        Button(self.face1, text="back", bg="yellow", command=self.back).place(x=180, y=100,width=140,height=40)
+
+
+    def add_json_path(self):
+        value = askopenfilename(title='add_json_path', filetypes=[("json", "*.json")], initialdir=self.json)
+        self.json_path.set(value)
+
+    def on_count(self):
+        path1 = self.json_path.get()
+        if path1 == "":
+            msg_box.showerror("Error", "please select json path")
+            return
+        f = open(path1, 'r')
+        content = f.read()
+
+        detail = json.loads(content)
+
+        c = detail['frames']
+
+        dic = {}
+        for item in c:
+            if len(c[item]):
+                v = c[item]
+                for index in range(len(v)):
+                    s = v[index]
+                    tag = s['tags'][0]
+                    if dic.__contains__(tag):
+                        dic[tag] = dic[tag] + 1
+                    else:
+                        dic[tag] = 1
+        msg_box.showinfo("Info", dic)
+        print(dic)
 
     def back(self):
         self.face1.destroy()
