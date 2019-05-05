@@ -18,7 +18,10 @@
      ```
      object_detection_demo_ssd_async.exe -i "{target_path}" -m {frozen_inference_graph.xml_path} -d CPU -t {rate}
      ```
-
+     
+  3. 统计VOTT标记的tag数目
+  
+  
 ### 3. 依赖
 
 + pip安装
@@ -35,4 +38,4 @@
 
 ![例1](doc/1.PNG) 
 ![例2](doc/2.PNG)
->只适用于window，dist下为打包好的exe.
+>只适用于window，dist下为打包好的exe. [ pyinstaller -F tkinter_gui.py ]
