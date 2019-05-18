@@ -271,7 +271,7 @@ class Face3:
 
 
     def add_json_path(self):
-        value = askopenfilename(title='add_json_path', filetypes=[("json", "*.json")], initialdir=self.json)
+        value = askdirectory(title='add_json_path', initialdir=self.json)
         self.json_path.set(value)
 
     def on_count(self):
@@ -279,26 +279,28 @@ class Face3:
         if path1 == "":
             msg_box.showerror("Error", "please select json path")
             return
-        f = open(path1, 'r')
-        content = f.read()
-
-        detail = json.loads(content)
-
-        c = detail['frames']
 
         dic = {}
-        for item in c:
-            if len(c[item]):
-                v = c[item]
-                for index in range(len(v)):
-                    s = v[index]
-                    tag = s["tags"]
-                    if tag:
-                        tag = tag[0]
-                        if dic.__contains__(tag):
-                            dic[tag] = dic[tag] + 1
-                        else:
-                            dic[tag] = 1
+        for file in os.listdir(path1):
+            file_location = os.path.join(path1, path1 + '/' + file)
+            print(file_location)
+            f = open(file_location, 'r')
+            content = f.read()
+
+            detail = json.loads(content)
+            c = detail['frames']
+            for item in c:
+                if len(c[item]):
+                    v = c[item]
+                    for index in range(len(v)):
+                        s = v[index]
+                        tag = s["tags"]
+                        if tag:
+                            tag = tag[0]
+                            if dic.__contains__(tag):
+                                dic[tag] = dic[tag] + 1
+                            else:
+                                dic[tag] = 1
         msg_box.showinfo("Info", dic)
         print(dic)
 

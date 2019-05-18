@@ -19,7 +19,7 @@
      object_detection_demo_ssd_async.exe -i "{target_path}" -m {frozen_inference_graph.xml_path} -d CPU -t {rate}
      ```
      
-  3. 统计VOTT标记的tag数目
+  3. 统计VOTT标记的tag数目 (选择json目录)
   
   
 ### 3. 依赖
