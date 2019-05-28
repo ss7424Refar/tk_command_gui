@@ -214,10 +214,11 @@ class Face2:
         # 创建空文件
         batch_path = "./run.bat"
         fp = open(batch_path, 'w')
-        fp.write('cd ' + self.sdk + '\n')
-        fp.write('call setupvars.bat' + '\n')
-        fp.write('cd ' + self.lib + '\n')
-        fp.write('object_detection_demo_ssd_async.exe -i ' + path1 + ' -m ' + path2 + ' -d CPU -t ' + self.rate.get() + '\n')
+        # fp.write('cd ' + self.sdk + '\n')
+        fp.write('call ' + self.sdk + '\\setupvars.bat' + '\n')
+        # fp.write('cd ' + self.lib + '\n')
+        fp.write(self.lib + '\\object_detection_demo_ssd_async.exe -i ' + path1 + ' -m ' + path2 + ' -d CPU -t ' +
+                 self.rate.get() + '\n')
         fp.close()
 
         p = subprocess.Popen("cmd.exe /c" + "run.bat", stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
