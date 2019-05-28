@@ -39,3 +39,6 @@
 ![例1](doc/1.PNG) 
 ![例2](doc/2.PNG)
 >只适用于window，dist下为打包好的exe. [ pyinstaller -F tkinter_gui.py ]
+
+### 5. 其他
++ openvino需要安装在c盘，即默认安装就好
