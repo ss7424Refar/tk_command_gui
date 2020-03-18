@@ -8,6 +8,7 @@ import subprocess
 import threading
 import json
 
+
 class Base:
     def __init__(self, master):
         self.root = master
@@ -63,12 +64,9 @@ class Face1:
         self.pb_path = StringVar()
         self.output_path = StringVar()
 
-        cf = configparser.ConfigParser()
-        print(os.getcwd())
-        cf.read(os.getcwd() + "/gui.ini")
-        self.pb = cf.get("path", "pb")
-        self.output = cf.get("path", "output")
-        self.tf = cf.get("path", "tf")
+        self.pb = Util.get_config('convert', 'pb')
+        self.output = Util.get_config('convert', 'output')
+        self.tf = Util.get_config('convert', 'tf')
 
         # pb path
         Label(self.face1, text="pb path").place(x=20, y=36, width=100, height=40)
@@ -80,21 +78,23 @@ class Face1:
         Entry(self.face1, textvariable=self.output_path).place(x=123, y=85, width=270, height=40)
         Button(self.face1, text="add", command=self.add_output_path).place(x=405, y=85, width=70, height=40)
 
-        Button(self.face1, text="convert", bg="white", command=lambda: self.thread_it(self.on_convert)).place(x=20, y=150,
+        Button(self.face1, text="convert", bg="white", command=lambda: Util.thread_it(self.on_convert)).place(x=20, y=150,
                                                                                                       width=140,
                                                                                                       height=40)
 
-        Button(self.face1, text="back", bg="yellow", command=lambda: self.thread_it(self.back)).place(x=180, y=150,
+        Button(self.face1, text="back", bg="yellow", command=lambda: Util.thread_it(self.back)).place(x=180, y=150,
                                                                                                       width=140,
                                                                                                       height=40)
 
     def add_pb_path(self):
         value = askdirectory(title='add_pb_path', initialdir=self.pb)
         self.pb_path.set(value)
+        Util.set_config('convert', 'pb', value)
 
     def add_output_path(self):
         value = askdirectory(title='add_output_path', initialdir=self.output)
         self.output_path.set(value)
+        Util.set_config('convert', 'output', value)
 
     def on_convert(self):
         path1 = self.pb_path.get()
@@ -106,17 +106,12 @@ class Face1:
             msg_box.showerror("Error", "please select output path")
             return
 
-        cmd = 'python mo_tf.py --input_model="' + path1 + '/frozen_inference_graph.pb"' + ' --tensorflow_use_custom_operations_config extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config ' + path1 + '/pipeline.config --output="detection_boxes,detection_scores,num_detections" ' + '--output_dir=' + path2 + ' --reverse_input_channels'
+        cmd = 'python '+ self.tf +'mo_tf.py --input_model="' + path1 + '/frozen_inference_graph.pb"' + ' --tensorflow_use_custom_operations_config extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config ' + path1 + '/pipeline.config --output="detection_boxes,detection_scores,num_detections" ' + '--output_dir=' + path2 + ' --reverse_input_channels'
         print(cmd)
-
-        d = os.path.dirname(__file__)  # 返回当前文件所在的目录
-        parent_path = os.path.dirname(d)  # 获得d所在的目录,即d的父级目录
-        parent_path = parent_path.replace('/', '\\')
 
         # 创建空文件
         batch_path = "./convert.bat"
         fp = open(batch_path, 'w')
-        fp.write('cd ' + self.tf + '\n')
         fp.write(cmd + '\n')
         fp.close()
 
@@ -128,14 +123,6 @@ class Face1:
 
         p.wait()
         msg_box.showinfo("Info", "done, code = " + str(p.returncode))
-
-    def thread_it(self, func, *args):
-        # 创建
-        t = threading.Thread(target=func, args=args)
-        # 守护 !!!
-        t.setDaemon(True)
-        # 启动
-        t.start()
 
     def back(self):
         self.face1.destroy()
@@ -154,12 +141,10 @@ class Face2:
         self.rate = StringVar()
         self.rate.set(0.8)
 
-        cf = configparser.ConfigParser()
-        cf.read(os.getcwd() + "/gui.ini")
-        self.video = cf.get("path", "video")
-        self.model = cf.get("path", "model")
-        self.sdk = cf.get("path", "sdk")
-        self.lib = cf.get("path", "lib")
+        self.video = Util.get_config('run', "video")
+        self.model = Util.get_config('run', "model")
+        self.sdk = Util.get_config('run', "sdk")
+        self.lib = Util.get_config('run', "lib")
 
         # video path
         Label(self.face1, text="video path").place(x=20, y=36, width=100, height=40)
@@ -175,17 +160,15 @@ class Face2:
         Label(self.face1, text="rate").place(x=20, y=130, width=100, height=40)
         Entry(self.face1, textvariable=self.rate).place(x=123, y=130, width=60, height=40)
 
-        # Button(self.face1, text='back', command=self.back).place(x=123, y=100, width=60, height=40)
-
-        Button(self.face1, text="run", bg="white", command=lambda: self.thread_it(self.on_run)).place(x=210, y=130,
+        Button(self.face1, text="run", bg="white", command=lambda: Util.thread_it(self.on_run)).place(x=210, y=130,
                                                                                                       width=80,
                                                                                                       height=40)
 
-        Button(self.face1, text="stop", bg="yellow", command=lambda: self.thread_it(self.on_stop)).place(x=300, y=130,
+        Button(self.face1, text="stop", bg="yellow", command=lambda: Util.thread_it(self.on_stop)).place(x=300, y=130,
                                                                                                          width=80,
                                                                                                          height=40)
 
-        Button(self.face1, text="back", bg="yellow", command=lambda: self.thread_it(self.back)).place(x=390, y=130,
+        Button(self.face1, text="back", bg="yellow", command=lambda: Util.thread_it(self.back)).place(x=390, y=130,
                                                                                                       width=80,
                                                                                                       height=40)
 
@@ -207,16 +190,10 @@ class Face2:
             msg_box.showerror("Error", "please select model path")
             return
 
-        # d = os.path.dirname(__file__)  # 返回当前文件所在的目录
-        # parent_path = os.path.dirname(d)  # 获得d所在的目录,即d的父级目录
-        # parent_path = parent_path.replace('/', '\\')
-
         # 创建空文件
         batch_path = "./run.bat"
         fp = open(batch_path, 'w')
-        # fp.write('cd ' + self.sdk + '\n')
         fp.write('call ' + self.sdk + '\\setupvars.bat' + '\n')
-        # fp.write('cd ' + self.lib + '\n')
         fp.write(self.lib + '\\object_detection_demo_ssd_async.exe -i ' + path1 + ' -m ' + path2 + ' -d CPU -t ' +
                  self.rate.get() + '\n')
         fp.close()
@@ -234,14 +211,6 @@ class Face2:
         p.wait()
         print(p.returncode)
 
-    def thread_it(self, func, *args):
-        # 创建
-        t = threading.Thread(target=func, args=args)
-        # 守护 !!!
-        t.setDaemon(True)
-        # 启动
-        t.start()
-
     def back(self):
         self.face1.destroy()
         Index(self.master)
@@ -255,10 +224,7 @@ class Face3:
         self.face1.place(x=0, y=0, width=540, height=260)
 
         self.json_path = StringVar()
-
-        cf = configparser.ConfigParser()
-        cf.read(os.getcwd() + "/gui.ini")
-        self.json = cf.get("path", "json")
+        self.json = Util.get_config('count', 'json')
 
         # json path
         Label(self.face1, text="json path").place(x=20, y=36, width=100, height=40)
@@ -308,6 +274,34 @@ class Face3:
     def back(self):
         self.face1.destroy()
         Index(self.master)
+
+
+class Util:
+    @staticmethod
+    def get_config(section, key):
+        config_path = os.getcwd() + "/gui.ini"
+        cf = configparser.ConfigParser()
+        cf.read(config_path)
+        return cf.get(section, key)
+
+    @staticmethod
+    def set_config(section, key, value):
+        config_path = os.getcwd() + "/gui.ini"
+        cf = configparser.ConfigParser()
+        cf.read(config_path)
+        cf.set(section, key, value + str(os.path.sep))
+        # write to file
+        with open(config_path,"w+") as f:
+            cf.write(f)
+
+    @staticmethod
+    def thread_it(func, *args):
+        # 创建
+        t = threading.Thread(target=func, args=args)
+        # 守护 !!!
+        t.setDaemon(True)
+        # 启动
+        t.start()
 
 
 if __name__ == '__main__':
